@@ -3,6 +3,7 @@ package com.api.geoshot.apigeoshot;
 import java.io.*;
 import com.api.geoshot.apigeoshot.classes.publicationsDAO;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -24,9 +25,9 @@ public class InitialPageAPIServlet extends HttpServlet {
             publicationsDAO feedGenerator = new publicationsDAO();
 
             Gson gson = new Gson();
-            String stringFeedList = gson.toJson(feedGenerator.getFeedFromUser(username));
+            JsonElement stringFeedList = gson.toJsonTree(feedGenerator.getFeedFromUser(username));
 
-            jsonResponse.addProperty("feedlist",stringFeedList);
+            jsonResponse.add("feedlist",stringFeedList);
             jsonResponse.addProperty("username",username);
         }
 

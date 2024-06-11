@@ -2,6 +2,7 @@ package com.api.geoshot.apigeoshot;
 
 import com.api.geoshot.apigeoshot.classes.User;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -31,9 +32,9 @@ public class PerfilAPIServlet extends HttpServlet {
             usersDAO UserManager = new usersDAO();
             User thisUser = UserManager.getUser(username);
             Gson gson = new Gson();
-            String stringThisUser = gson.toJson(thisUser);
+            JsonElement ThisUser = gson.toJsonTree(thisUser);
             jsonResponse.addProperty("status","success");
-            jsonResponse.addProperty("user", stringThisUser);
+            jsonResponse.add("user", ThisUser);
             jsonResponse.addProperty("username",username);
 
         }

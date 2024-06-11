@@ -94,7 +94,7 @@ public class EditPerfilAPIServlet extends HttpServlet {
             if(noPhotoOrPassword || noMatchNewPassword || noOldPasswordOnUpdate) {
                 jsonResponse.addProperty("status","error");
                 jsonResponse.addProperty("username",username);
-                jsonResponse.addProperty("user",gson.toJson(thisUser));
+                jsonResponse.add("user",gson.toJsonTree(thisUser));
                 jsonResponse.addProperty("no-photo",noPhotoOrPassword?"true":"false");
                 jsonResponse.addProperty("non-equal-password",noMatchNewPassword?"true":"false");
                 jsonResponse.addProperty("no-old-password-on-update",noOldPasswordOnUpdate?"true":"false");
@@ -102,7 +102,7 @@ public class EditPerfilAPIServlet extends HttpServlet {
 
                 jsonResponse.addProperty("status","success");
                 jsonResponse.addProperty("username",username);
-                jsonResponse.addProperty("user",gson.toJson(thisUser));
+                jsonResponse.add("user",gson.toJsonTree(thisUser));
                 jsonResponse.addProperty("no-photo","false");
                 jsonResponse.addProperty("non-equal-password","false");
                 jsonResponse.addProperty("no-old-password-on-update","false");

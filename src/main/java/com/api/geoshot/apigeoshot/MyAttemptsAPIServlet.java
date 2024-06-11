@@ -3,6 +3,7 @@ package com.api.geoshot.apigeoshot;
 import com.api.geoshot.apigeoshot.classes.MyAttempt;
 import com.api.geoshot.apigeoshot.classes.publicationsDAO;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -33,10 +34,10 @@ public class MyAttemptsAPIServlet  extends HttpServlet {
             publicationsDAO PublicationsManager = new publicationsDAO();
             List<MyAttempt> attemptslist = PublicationsManager.getMyAttempts(username);
 
-            String stringAttemptslist = gson.toJson(attemptslist);
+            JsonElement Attemptslist = gson.toJsonTree(attemptslist);
 
             jsonResponse.addProperty("username",username);
-            jsonResponse.addProperty("attemptslist", stringAttemptslist);
+            jsonResponse.add("attemptslist", Attemptslist);
 
         }
 
