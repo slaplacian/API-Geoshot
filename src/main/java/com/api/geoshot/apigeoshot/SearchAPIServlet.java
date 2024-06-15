@@ -43,7 +43,7 @@ public class SearchAPIServlet extends HttpServlet {
                 boolean userFollows = UserManager.follows(username,searchedUsername);
                 jsonResponse.addProperty("followship-state",userFollows?"true":"false");
                 Gson gson = new Gson();
-                jsonResponse.addProperty("user", gson.toJson(searchedUser));
+                jsonResponse.add("user", gson.toJsonTree(searchedUser));
 
 
             }

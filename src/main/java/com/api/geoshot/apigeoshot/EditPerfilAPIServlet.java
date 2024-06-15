@@ -37,7 +37,7 @@ public class EditPerfilAPIServlet extends HttpServlet {
 
             Gson gson = new Gson();
 
-            jsonResponse.addProperty("user",gson.toJson(thisUser));
+            jsonResponse.add("user",gson.toJsonTree(thisUser));
 
         }
 

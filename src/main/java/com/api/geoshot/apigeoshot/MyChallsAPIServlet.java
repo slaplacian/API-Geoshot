@@ -41,7 +41,7 @@ public class MyChallsAPIServlet extends HttpServlet {
 
             Gson gson = new Gson();
 
-            jsonResponse.addProperty("user", gson.toJson(UserManager.getUser(username)));
+            jsonResponse.add("user", gson.toJsonTree(UserManager.getUser(username)));
             jsonResponse.add("publicationlist",gson.toJsonTree(publicationlist));
 
         }
